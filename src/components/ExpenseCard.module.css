@@ -1,0 +1,21 @@
+
+
+.amount{
+    font-size: 20px;
+}
+
+
+.amount p {
+    font-style: italic !important;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif !important;
+}
+
+
+
+.low {
+    color: red;
+}
+
+.high {
+    color: green;
+}
