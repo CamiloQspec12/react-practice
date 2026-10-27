@@ -10,7 +10,7 @@ function Counter (){
 
 
     return (
-        <button onClick={ () => setCounter( counter * 2 )} style={{ padding: 10, width: 150, marginTop: 10 }} >
+        <button onClick={ () => setCounter( counter + 1 )} style={{ padding: 10, width: 150, marginTop: 10 }} >
             Click { counter }
         </button>
     )
