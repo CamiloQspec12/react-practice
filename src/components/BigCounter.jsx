@@ -1,8 +1,9 @@
 import { useState } from "react"
+import ExpenseCard from './ExpenseCard'
 
 
 function handleClick(){
-    console.log("Dnetro de la ufnicon handleClick")
+    // console.log("Dentro de la ufnicon handleClick")
 }
 
 
@@ -18,15 +19,17 @@ function BigCounter() {
 
     const [ cosa, setCosa ] = useState({ type: '', value: 0 })
 
-    const listExam = [{ id: 1, name: 'Oscar Zorrilla', fecha: '25/10/26'}, { id: 2, name: 'Camilo Quintero', fecha: '12/11/2001'}, { id: 3, name: 'Jhorley Z', fecha: '12/11/2006'}]
+    const data = [ { id: 1, type: 'Mercado', value: 120, category: 'Comida' },
+  { id: 2, type: 'Cine', value: 30, category: 'Ocio' },]
 
+    const [ list, setList ] = useState(data)
+
+
+    
     const [ isAvailable, setIsAvailable ] = useState(false)
 
+    // console.log(isAvailable)
 
-
-
-
-    console.log(isAvailable)
 
 
 
@@ -72,9 +75,21 @@ function BigCounter() {
             </div>
             { isAvailable ? content : <p>Aja no esta</p> }
 
-            {listExam.map(e => {
-                
-            })}
+            <button onClick={ () => setList( prev => [...prev, { id: Date.now(), type: 'Nuevo', value: 50, category: 'Otros' }] ) } style={buttonStyle}>
+                    Agregar card
+                </button>
+
+            <button onClick={ () => setList( prev => prev.filter(e => e.id != 1 ) ) } style={buttonStyle}>
+                    Eliminar
+                </button>
+
+
+
+            { list.map( e => (
+                <div key={e.id}>
+                    <ExpenseCard  type={e.type} value={e.value}   />
+                </div>
+            )) }
 
         </>
     )

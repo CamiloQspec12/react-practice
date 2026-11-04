@@ -3,6 +3,8 @@
 import './App.css'
 import Counter from './components/Counter'
 import BigCounter from './components/BigCounter'
+import ExpensesList from './components/ExpensesList'
+
 
 function App() {
 
@@ -17,6 +19,7 @@ function App() {
       <div style={{backgroundColor: 'white', height: 2, widt: 100, borderRadius: 50, marginTop: 25 }} />
       <Counter></Counter>
       <BigCounter></BigCounter>
+      <ExpensesList></ExpensesList>
     </>
   )
 }

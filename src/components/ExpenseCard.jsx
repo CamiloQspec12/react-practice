@@ -2,7 +2,7 @@
 import s from './ExpenseCard.module.css'
 
 
-function ExpenseCard({ value, type, category = 'Sin categoria'  }){
+function ExpenseCard({ value, type = 'Sin tipo', category = 'Sin categoria'  }){
     return (
         <>
             <div className={`${s.amount}`}>
