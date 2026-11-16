@@ -2,13 +2,26 @@ import { useState } from "react"
 import s from "./ExpenseList.module.css" 
 
 
-function ExpenseForm () {
+const initialForm = { type: '', value: '', category: '' }
 
-    const [ form, setForm ] = useState({ type: '', value: '', category: '' }) 
+
+function ExpenseForm ( { onAdd } ) {
+
+    const [ form, setForm ] = useState(initialForm) 
+
+
+    function validate(){
+        
+    }
 
 
      function handleSubmit(e){
         e.preventDefault()
+
+         if(!validate()) 
+
+        onAdd({ type: form.type, value: Number(form.value), category: form.category })
+        setForm(initialForm)
     }
 
     function handleChange(e){
@@ -17,21 +30,28 @@ function ExpenseForm () {
     }
 
 
+
+
     return (
         <form className={s.rowForm} onSubmit={handleSubmit}>
             <div>
-                <input name="type" value={form.type} onChange={handleChange} />
+                <input placeholder="Tipo" name="type" value={form.type} onChange={handleChange} />
                 <span>{form.type}</span>
             </div>
                 <div>
-                <input name="value" value={form.value} onChange={handleChange} />
+                <input placeholder="Precio" name="value" value={form.value} onChange={handleChange} />
                 <span>{form.value}</span>
             </div>
                 <div>
-                <input name="category" value="hola" onChange={handleChange} />
+                <select name="category" value={form.category} onChange={handleChange} >
+                    <option value="">Selecciona una categoria</option>
+                    <option value="mercado">Mercado</option>
+                    <option value="gusto">Gusto</option>
+                    <option value="deuda">Deuda</option>
+                </select>
                 <span>{form.category}</span>
             </div>
-            <div className={` ${ s.buttonsRow } `}>
+            <div className={` ${ s.buttonsRow } `} >
                 <button type="submit" className={s.button}>
                     Agregar
                 </button>

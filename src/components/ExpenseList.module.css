@@ -23,6 +23,13 @@
     border-style: none;
 }
 
+.rowForm div select {
+    width: 100%;
+    padding: 8px;
+    border-radius: 10px;
+    border-style: none;
+}
+
 
 .totalValue{
     color: red;

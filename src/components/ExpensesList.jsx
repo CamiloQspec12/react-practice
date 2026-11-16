@@ -14,10 +14,14 @@ function ExpensesList () {
 
     const bigOnes = expenses.filter(e => e.value > 100).length
 
-    function agregarDato () {
-        setExpenses( prev => [...prev, { id: Date.now(), type: 'datod sdada', value: 2500, category: 'Gusto'}] )
-    }
+    // function agregarDato () {
+    //     setExpenses( prev => [...prev, { id: Date.now(), type: 'datod sdada', value: 2500, category: 'Gusto'}] )
+    // }
 
+    function handleAdd(newExpense){
+        const { type, value, category } = newExpense
+        setExpenses( prev => [...prev, { id: Date.now(), type: type, value: value, category: category}] )
+    }
    
 
     function eliminarDato (itemId) {
@@ -28,7 +32,7 @@ function ExpensesList () {
     return (
         
         <div style={{ marginTop: 50, borderTop: 'solid', borderColor: 'black', borderWidth: 5, paddingTop: 20  }}>
-            <ExpenseForm></ExpenseForm>
+            <ExpenseForm onAdd={handleAdd} ></ExpenseForm>
             <h1 className={s.totalValue}>
                 {bigOnes} {bigOnes === 1 ? 'gasto' : 'gastos'} mayores a 100
             </h1>
