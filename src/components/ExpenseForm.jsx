@@ -8,18 +8,36 @@ const initialForm = { type: '', value: '', category: '' }
 function ExpenseForm ( { onAdd } ) {
 
     const [ form, setForm ] = useState(initialForm) 
+    const [ errors, setErrors] = useState({})
 
 
     function validate(){
         
+        const newErrors = {}
+
+        if( !form.type || !form.type.trim() ){
+            newErrors.type = 'El campo tipo no puede estar vacio'
+        }
+
+        if(!form.value ||  Number.isNaN(Number(form.value))  || Number(form.value) <= 0){
+            newErrors.value = 'el valor tiene que ser un numero'
+        }
+
+        if(!form.category){
+            newErrors.category = 'la categoria no puede estar vacia'
+        }
+
+        setErrors(newErrors)
+
+        return Object.keys(newErrors).length === 0
     }
 
 
      function handleSubmit(e){
         e.preventDefault()
 
-         if(!validate()) 
-
+        if(!validate()) return
+         
         onAdd({ type: form.type, value: Number(form.value), category: form.category })
         setForm(initialForm)
     }
@@ -30,17 +48,15 @@ function ExpenseForm ( { onAdd } ) {
     }
 
 
-
-
     return (
         <form className={s.rowForm} onSubmit={handleSubmit}>
             <div>
                 <input placeholder="Tipo" name="type" value={form.type} onChange={handleChange} />
-                <span>{form.type}</span>
+                <span>{errors.type}</span>
             </div>
                 <div>
                 <input placeholder="Precio" name="value" value={form.value} onChange={handleChange} />
-                <span>{form.value}</span>
+                <span>{errors.value}</span>
             </div>
                 <div>
                 <select name="category" value={form.category} onChange={handleChange} >
@@ -49,7 +65,7 @@ function ExpenseForm ( { onAdd } ) {
                     <option value="gusto">Gusto</option>
                     <option value="deuda">Deuda</option>
                 </select>
-                <span>{form.category}</span>
+                <span>{errors.category}</span>
             </div>
             <div className={` ${ s.buttonsRow } `} >
                 <button type="submit" className={s.button}>
