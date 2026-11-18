@@ -4,6 +4,7 @@ import './App.css'
 import Counter from './components/Counter'
 import BigCounter from './components/BigCounter'
 import ExpensesList from './components/ExpensesList'
+import PostList from './components/PostList'
 
 
 function App() {
@@ -16,10 +17,11 @@ function App() {
         <ExpenseCard type="Polas con los panas" value={48} category="salida"></ExpenseCard>
       </Card>
       <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum omnis nesciunt mollitia veritatis sed quae blanditiis commodi? Sunt dicta, atque ipsa ex quae, eaque mollitia odio magni maiores vitae obcaecati?</p> */}
-      <div style={{backgroundColor: 'white', height: 2, widt: 100, borderRadius: 50, marginTop: 25 }} />
+      {/* <div style={{backgroundColor: 'white', height: 2, widt: 100, borderRadius: 50, marginTop: 25 }} />
       <Counter></Counter>
       <BigCounter></BigCounter>
-      <ExpensesList></ExpensesList>
+      <ExpensesList></ExpensesList> */}
+      <PostList></PostList>
     </>
   )
 }

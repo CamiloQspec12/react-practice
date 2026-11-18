@@ -5,10 +5,16 @@ import s from "./ExpenseList.module.css"
 const initialForm = { type: '', value: '', category: '' }
 
 
+
+
+
+
 function ExpenseForm ( { onAdd } ) {
 
     const [ form, setForm ] = useState(initialForm) 
     const [ errors, setErrors] = useState({})
+
+    
 
 
     function validate(){
