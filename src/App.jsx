@@ -5,6 +5,8 @@ import Counter from './components/Counter'
 import BigCounter from './components/BigCounter'
 import ExpensesList from './components/ExpensesList'
 import PostList from './components/PostList'
+import Login from './components/Login'
+import { Route, Routes } from 'react-router-dom'
 
 
 function App() {
@@ -21,7 +23,10 @@ function App() {
       <Counter></Counter>
       <BigCounter></BigCounter>
       <ExpensesList></ExpensesList> */}
-      <PostList></PostList>
+      <Routes>
+        <Route path='/' element={<PostList />} ></Route>
+        <Route path='/login' element={ <Login /> } ></Route>
+      </Routes>
     </>
   )
 }

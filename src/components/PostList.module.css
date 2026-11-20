@@ -10,6 +10,11 @@
 
 
 .containerPost{
-    padding: 10px;
-    height: 100%;
+    height: 100vh;
+}
+
+.centerContent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
