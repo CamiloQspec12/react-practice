@@ -6,26 +6,21 @@ import BigCounter from './components/BigCounter'
 import ExpensesList from './components/ExpensesList'
 import PostList from './components/PostList'
 import Login from './components/Login'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, Link } from 'react-router-dom'
 
 
 function App() {
 
   return (
     <>
-      {/* <Card>
-        <ExpenseCard type="Comida con los panas" value={200}></ExpenseCard>
-        <ExpenseCard type="Mercado semanal" value={150} category="mercado"></ExpenseCard>
-        <ExpenseCard type="Polas con los panas" value={48} category="salida"></ExpenseCard>
-      </Card>
-      <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum omnis nesciunt mollitia veritatis sed quae blanditiis commodi? Sunt dicta, atque ipsa ex quae, eaque mollitia odio magni maiores vitae obcaecati?</p> */}
-      {/* <div style={{backgroundColor: 'white', height: 2, widt: 100, borderRadius: 50, marginTop: 25 }} />
-      <Counter></Counter>
-      <BigCounter></BigCounter>
-      <ExpensesList></ExpensesList> */}
+      <div className='navbar' >
+          <Link to="/">Home </Link>
+          <Link to='/login'>Login</Link>
+      </div>
       <Routes>
-        <Route path='/' element={<PostList />} ></Route>
-        <Route path='/login' element={ <Login /> } ></Route>
+        <Route path='/' element={<PostList />} />
+        <Route path='/login' element={ <Login /> } />
+        <Route path='*' element={ <p>Pagina no encontrada</p> } />
       </Routes>
     </>
   )
