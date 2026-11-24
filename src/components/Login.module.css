@@ -1,0 +1,18 @@
+.formButtons{
+    margin-top: 10px;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+}
+
+.formButtons span{
+    margin-bottom: 10px;
+}
+
+.formButtons input{
+    padding: 10px;
+}
+
+.formButtons button{
+    padding: 10px;
+}
