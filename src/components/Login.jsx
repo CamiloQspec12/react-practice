@@ -39,8 +39,12 @@ function Login(){
         try{
             if(!validate()) return
             setLoading(true)
+            setError('')
             const res = await fetch('https://expensescontrol-backend.onrender.com/api/login', {method: 'POST', headers: {'Content-Type' : 'application/json'}, body: JSON.stringify(data)})
-            if(!res.ok) throw new Error(res.status)
+            if(!res.ok){
+                if(res.status == 401) throw new Error('Credenciales equivocadas')
+                throw new Error('Algo salio mal al conectar con el servidor.....')                
+            }
             const json = await res.json()
             localStorage.setItem('token', json.token)
             navigate('/')
@@ -55,7 +59,6 @@ function Login(){
     async function handleSubmit(e){
         e.preventDefault()
         await login({ email: form.email, password: form.password })
-        return
     }
 
     function handleChange(e){
@@ -67,15 +70,16 @@ function Login(){
 
     return (
         <>
-            { loading ?  <p>Cargando....</p> : error ? <p>{error} </p> : 
+            { loading ?  <p>Cargando....</p> : 
             <form className={s.formButtons} onSubmit={handleSubmit}>
-                <input name="email" value={form.email}  onChange={handleChange} />
+                <input name="email" type="email" placeholder="Email" value={form.email}  onChange={handleChange} />
                 <span> { errors.email } </span>
-                <input name="password" value={form.password} onChange={handleChange} />
+                <input name="password" type="password" placeholder="Contrasena" value={form.password} onChange={handleChange} />
                 <span> { errors.password } </span>
                <button type="submit">
-                    Agregar
+                    Entrar
                 </button>
+                { error ? <span style={{ marginTop: 10 }}>{error}</span> : '' }
             </form>   
             }
         </>
